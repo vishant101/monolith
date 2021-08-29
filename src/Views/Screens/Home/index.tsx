@@ -1,12 +1,21 @@
-import React from 'react';
-import {View, Text} from 'react-native';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
-function Home() {
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Home Screen</Text>
-    </View>
+import Home from './home';
+
+import {fetchTransactions} from '../../../Redux/Actions';
+
+const mapStateToProps = state => {
+  console.log(state);
+  return state;
+};
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      fetchTransactions,
+    },
+    dispatch,
   );
-}
 
-export default Home;
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
