@@ -1,5 +1,7 @@
 import React from 'react';
 import {Text, Image} from 'react-native';
+
+import {getCurrencyImgSource} from '../../../Utils';
 import {
   Container,
   CurrencyContainer,
@@ -7,8 +9,6 @@ import {
   CurrencyText,
   styles,
 } from './styles';
-import {ic_usd} from '../../../Assets/Img';
-import {getCurrencyImgSource} from '../../../Utils';
 
 export interface Props {
   currency: string;
