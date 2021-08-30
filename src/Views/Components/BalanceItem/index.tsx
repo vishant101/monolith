@@ -3,6 +3,7 @@ import {View, Text} from 'react-native';
 import {Balances} from '../../../Redux/Types';
 import {Container, ElementContantainer, HeadingText} from './styles';
 import BalanceRow from '../BalanceRow';
+import {BALANCES, LAST_ACTIVITY, USER_ID} from './consts';
 
 interface Props {
   user_id: string;
@@ -10,25 +11,18 @@ interface Props {
   timestamp: string;
 }
 
-const renderUserID = (user_id: string) => (
+const renderElement = (heading: string, value: string) => (
   <ElementContantainer>
-    <HeadingText>USER ID:</HeadingText>
-    <Text>{user_id}</Text>
-  </ElementContantainer>
-);
-
-const renderLastActivity = (timestamp: string) => (
-  <ElementContantainer>
-    <HeadingText>LAST ACTIVITY:</HeadingText>
-    <Text>{timestamp}</Text>
+    <HeadingText>{`${heading}:`}</HeadingText>
+    <Text>{value}</Text>
   </ElementContantainer>
 );
 
 const renderBalances = (balances: Balances) => (
   <ElementContantainer>
-    <HeadingText>BALANCES</HeadingText>
+    <HeadingText>{`${BALANCES}:`}</HeadingText>
     {Object.entries(balances).map(entry => (
-      <BalanceRow currency={entry[0]} balance={entry[1]} />
+      <BalanceRow key={entry[0]} currency={entry[0]} balance={entry[1]} />
     ))}
   </ElementContantainer>
 );
@@ -37,8 +31,8 @@ const BalanceItem = ({user_id, balances, timestamp}: Props) => {
   return (
     <Container>
       <View>
-        {renderUserID(user_id)}
-        {renderLastActivity(timestamp)}
+        {renderElement(USER_ID, user_id)}
+        {renderElement(LAST_ACTIVITY, timestamp)}
         {renderBalances(balances)}
       </View>
     </Container>

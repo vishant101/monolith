@@ -4,7 +4,7 @@ import {Container} from './styles';
 
 interface Props {
   currency: string;
-  balance: number;
+  balance: string;
 }
 
 const BalanceRow = ({currency, balance}: Props) => (
