@@ -10,12 +10,15 @@ A mulitpage React-Native that fetches data containing a list of card transaction
 3. Install node modules:
 - `npm i`
 
-3. Install pods:
+4. Install pods:
 - `cd ios && pod install`
 
-4. Run App:
+5. To run the app:
 - iOS: `npx react-native run-ios`
 - Android: `npx react-native run-android`
+
+6. To run tests:
+- npm test
 
 ## Screenshots
 | Laoading | Balances | Transactions |
