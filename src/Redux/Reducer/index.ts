@@ -4,6 +4,7 @@ import {
   FETCH_TRANSACTIONS_REQUEST,
   FETCH_TRANSACTIONS_SUCESS,
 } from '../Constants';
+import {ActionTypes} from '../Types';
 
 const initialState = {
   requestingTransactions: false,
@@ -13,7 +14,7 @@ const initialState = {
   processedTransactions: [],
 };
 
-function rootReducer(state = initialState, action) {
+function rootReducer(state = initialState, action: ActionTypes) {
   switch (action.type) {
     case FETCH_TRANSACTIONS_REQUEST: {
       return {
