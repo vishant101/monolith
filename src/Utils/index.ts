@@ -38,6 +38,18 @@ export const isValidTransaction = (transaction: Transaction) => {
   return true;
 };
 
+export const parseSignedFloat = (amount: string) => {
+  const operator = amount.charAt(0);
+  const numberComponent = amount.substring(1, amount.length);
+  const amountInFloat = parseFloat(numberComponent);
+  return operator === '-' ? 0 - amountInFloat : amountInFloat;
+};
+
+export const calculateBalance = (oldBalance: number, amount: string) => {
+  const result = parseFloat(oldBalance) + parseSignedFloat(amount);
+  return result.toFixed(2);
+};
+
 export const processTransactions = (transactions: Transactions) => {
   const processedTransactions: ProcessedTransactions = {};
   if (!transactions || transactions.length === 0) {
@@ -51,13 +63,19 @@ export const processTransactions = (transactions: Transactions) => {
         const BalanceItem = processedTransactions[transaction.user_id];
         const currencyBalance = BalanceItem.balances[transaction.currency];
         if (currencyBalance) {
+          BalanceItem.balances[transaction.currency] = calculateBalance(
+            currencyBalance,
+            transaction.amount,
+          );
         } else {
-          BalanceItem.balances[transaction.currency] = transaction.amount;
+          BalanceItem.balances[transaction.currency] = parseSignedFloat(
+            transaction.amount,
+          );
         }
         BalanceItem.transactions.push(transaction);
       } else {
         const balances = {};
-        balances[transaction.currency] = transaction.amount;
+        balances[transaction.currency] = parseSignedFloat(transaction.amount);
         processedTransactions[transaction.user_id] = {
           user_id: transaction.user_id,
           balances: balances,

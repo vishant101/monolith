@@ -8,7 +8,7 @@ export interface Transaction {
 export interface Transactions extends Array<Transaction> {}
 
 export interface Balances {
-  [currency: string]: string;
+  [currency: string]: number;
 }
 
 export interface ProcessedTransactionProps {
