@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-import Home from './home';
+import Balances from './Balances';
 
 import {fetchTransactions} from '../../../Redux/Actions';
 
@@ -27,4 +27,4 @@ const mapDispatchToProps = dispatch =>
     dispatch,
   );
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Balances);

@@ -1,3 +1,3 @@
-import Home from './Home';
+import Balances from './Balances';
 
-export {Home};
+export {Balances};
