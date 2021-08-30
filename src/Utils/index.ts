@@ -48,15 +48,19 @@ export const processTransactions = (transactions: Transactions) => {
     const transaction = transactions[i];
     if (isValidTransaction(transaction)) {
       if (processedTransactions[transaction.user_id]) {
-        processedTransactions[transaction.user_id].transactions.push(
-          transaction,
-        );
+        const BalanceItem = processedTransactions[transaction.user_id];
+        const currencyBalance = BalanceItem.balances[transaction.currency];
+        if (currencyBalance) {
+        } else {
+          BalanceItem.balances[transaction.currency] = transaction.amount;
+        }
+        BalanceItem.transactions.push(transaction);
       } else {
+        const balances = {};
+        balances[transaction.currency] = transaction.amount;
         processedTransactions[transaction.user_id] = {
           user_id: transaction.user_id,
-          gbp_balance: 0,
-          usd_balance: 0,
-          eur_balance: 0,
+          balances: balances,
           transactions: [transaction],
           lastupdated: transaction.timestamp,
         };

@@ -37,7 +37,6 @@ export const fetchTransactions = () => async dispatch => {
   try {
     const transactions = await getTransactions();
     const processedTransactions = await processTransactions(transactions);
-    console.log(`--- processedTransactions`, processedTransactions);
 
     dispatch(fetchTransactionsSuccess(processedTransactions));
   } catch (error) {
