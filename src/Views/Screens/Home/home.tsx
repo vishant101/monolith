@@ -9,6 +9,7 @@ function Home({
   processedTransactions,
   fetchTransactions,
 }) {
+  console.log('processedTransactions :>> ', processedTransactions);
   if (!requestingTransactions && !requestTransactionsComplete) {
     fetchTransactions();
   }
