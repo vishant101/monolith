@@ -21,7 +21,7 @@ export const fetchTransactionsSuccess = (
   },
 });
 
-export const fetchTransactionsFail = error => ({
+export const fetchTransactionsFail = (error: any) => ({
   type: FETCH_TRANSACTIONS_FAIL,
   payload: {
     error,
@@ -32,7 +32,7 @@ export const fetchTransactionsComplete = () => ({
   type: FETCH_TRANSACTIONS_COMPLETE,
 });
 
-export const fetchTransactions = () => async dispatch => {
+export const fetchTransactions = () => async (dispatch: any) => {
   dispatch(fetchTransactionsRequest());
   try {
     const transactions = await getTransactions();

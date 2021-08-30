@@ -44,13 +44,6 @@ describe('Utils', () => {
     expect(isValidUserId('b4521412-2eeb-43f3-a50d-be976b23189d')).toBeTruthy();
   });
 
-  const transaction = {
-    amount: '-886.69',
-    currency: 'GBP',
-    timestamp: '2020-05-29T16:59:39Z',
-    user_id: 'b4521412-2eeb-43f3-a50d-be976b23189d',
-  };
-
   it('should return the corrct value for isValidTransaction', () => {
     const transaction = {
       amount: '-886.69',
