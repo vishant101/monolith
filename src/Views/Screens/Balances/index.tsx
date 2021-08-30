@@ -1,25 +1,26 @@
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import {bindActionCreators, Dispatch} from 'redux';
 
 import Balances from './Balances';
 
 import {fetchTransactions} from '../../../Redux/Actions';
+import {ReducerState} from '../../../Redux/Types';
 
 const mapStateToProps = ({
   requestTransactionsComplete,
   requestTransactionsFail,
-  requestTransactionsSucess,
+  requestTransactionsSuccess,
   requestingTransactions,
   processedTransactions,
-}) => ({
+}: ReducerState) => ({
   requestTransactionsComplete,
   requestTransactionsFail,
-  requestTransactionsSucess,
+  requestTransactionsSuccess,
   requestingTransactions,
   processedTransactions,
 });
 
-const mapDispatchToProps = dispatch =>
+const mapDispatchToProps = (dispatch: Dispatch) =>
   bindActionCreators(
     {
       fetchTransactions,

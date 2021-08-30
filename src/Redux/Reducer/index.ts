@@ -4,14 +4,14 @@ import {
   FETCH_TRANSACTIONS_REQUEST,
   FETCH_TRANSACTIONS_SUCESS,
 } from '../Constants';
-import {ActionTypes} from '../Types';
+import {ActionTypes, ReducerState} from '../Types';
 
-const initialState = {
+const initialState: ReducerState = {
   requestingTransactions: false,
   requestTransactionsSuccess: false,
   requestTransactionsFail: false,
   requestTransactionsComplete: false,
-  processedTransactions: [],
+  processedTransactions: {},
 };
 
 function rootReducer(state = initialState, action: ActionTypes) {

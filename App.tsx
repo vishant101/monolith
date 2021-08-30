@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {Balances} from './src/Views/Screens';
+import {Balances, Transactions} from './src/Views/Screens';
 import configureStore from './src/Store/configureStore';
 
 const Stack = createNativeStackNavigator();
@@ -15,6 +15,7 @@ function App() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Balances" component={Balances} />
+          <Stack.Screen name="Transactions" component={Transactions} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

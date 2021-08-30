@@ -13,7 +13,7 @@ interface Props {
   fetchTransactions: Function;
 }
 
-function Home({
+function Balances({
   requestTransactionsComplete,
   requestTransactionsFail,
   requestTransactionsSucess,
@@ -57,4 +57,4 @@ function Home({
   );
 }
 
-export default Home;
+export default Balances;

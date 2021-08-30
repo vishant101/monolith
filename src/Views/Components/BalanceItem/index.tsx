@@ -4,6 +4,7 @@ import {Balances} from '../../../Redux/Types';
 import {Container, ElementContantainer, HeadingText} from './styles';
 import BalanceRow from '../BalanceRow';
 import {BALANCES, LAST_ACTIVITY, USER_ID} from './consts';
+import {useNavigation} from '@react-navigation/native';
 
 interface Props {
   user_id: string;
@@ -28,8 +29,14 @@ const renderBalances = (balances: Balances) => (
 );
 
 const BalanceItem = ({user_id, balances, timestamp}: Props) => {
+  const navigation = useNavigation();
   return (
-    <Container>
+    <Container
+      onPress={() =>
+        navigation.navigate('Transactions', {
+          user_id: user_id,
+        })
+      }>
       <View>
         {renderElement(USER_ID, user_id)}
         {renderElement(LAST_ACTIVITY, timestamp)}

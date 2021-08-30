@@ -5,6 +5,14 @@ import {
   FETCH_TRANSACTIONS_SUCESS,
 } from '../Constants';
 
+export interface ReducerState {
+  requestingTransactions: boolean;
+  requestTransactionsSuccess: boolean;
+  requestTransactionsFail: boolean;
+  requestTransactionsComplete: boolean;
+  processedTransactions: ProcessedTransactions;
+}
+
 export interface Transaction {
   user_id: string;
   timestamp: string;
