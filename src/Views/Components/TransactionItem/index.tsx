@@ -1,6 +1,14 @@
 import React from 'react';
-import {Text} from 'react-native';
-import {Container, CurrencyContainer} from './styles';
+import {Text, Image} from 'react-native';
+import {
+  Container,
+  CurrencyContainer,
+  AmountText,
+  CurrencyText,
+  styles,
+} from './styles';
+import {ic_usd} from '../../../Assets/Img';
+import {getCurrencyImgSource} from '../../../Utils';
 
 export interface Props {
   currency: string;
@@ -13,8 +21,13 @@ const TransactionItem = ({currency, amount, timestamp}: Props) => {
     <Container>
       <Text>{timestamp}</Text>
       <CurrencyContainer>
-        <Text>{amount}</Text>
-        <Text>{currency}</Text>
+        <AmountText>{amount}</AmountText>
+        <CurrencyText>{currency}</CurrencyText>
+        <Image
+          source={getCurrencyImgSource(currency)}
+          style={styles.image}
+          resizeMode="contain"
+        />
       </CurrencyContainer>
     </Container>
   );

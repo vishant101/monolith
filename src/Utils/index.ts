@@ -1,5 +1,6 @@
 import moment from 'moment';
 import {ProcessedTransactions, Transaction, Transactions} from '../Redux/Types';
+import {ic_usd, ic_gbp, ic_eur} from '../Assets/Img';
 
 export const isValidAmount = (amount: string) => {
   if (!amount) return false;
@@ -92,4 +93,17 @@ export const processTransactions = (transactions: Transactions) => {
   }
 
   return processedTransactions;
+};
+
+export const getCurrencyImgSource = (currency: string) => {
+  switch (currency) {
+    case 'USD':
+      return ic_usd;
+    case 'GBP':
+      return ic_gbp;
+    case 'EUR':
+      return ic_eur;
+    default:
+      return null;
+  }
 };

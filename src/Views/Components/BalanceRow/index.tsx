@@ -1,6 +1,7 @@
 import React from 'react';
-import {Text} from 'react-native';
-import {Container} from './styles';
+import {Text, Image} from 'react-native';
+import {getCurrencyImgSource} from '../../../Utils';
+import {Container, CurrencyText, styles} from './styles';
 
 interface Props {
   currency: string;
@@ -9,7 +10,12 @@ interface Props {
 
 const BalanceRow = ({currency, balance}: Props) => (
   <Container>
-    <Text>{`${currency}: ${balance}`}</Text>
+    <Image
+      source={getCurrencyImgSource(currency)}
+      style={styles.image}
+      resizeMode="contain"
+    />
+    <CurrencyText>{`${currency}: ${balance}`}</CurrencyText>
   </Container>
 );
 
