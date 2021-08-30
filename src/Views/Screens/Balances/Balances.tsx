@@ -1,22 +1,21 @@
 import React, {useEffect} from 'react';
-import {View, Text, FlatList} from 'react-native';
+import {Text, FlatList, ActivityIndicator} from 'react-native';
 import {ProcessedTransactions} from '../../../Redux/Types';
 import BalanceItem from '../../Components/BalanceItem';
-import {Container, Seperator} from './styles';
+import {Container, Seperator, ContentContainer} from './styles';
 
 interface Props {
   requestTransactionsComplete: boolean;
   requestTransactionsFail: boolean;
-  requestTransactionsSucess: boolean;
+  requestTransactionsSuccess: boolean;
   requestingTransactions: boolean;
   processedTransactions: ProcessedTransactions;
   fetchTransactions: Function;
 }
 
 function Balances({
-  requestTransactionsComplete,
   requestTransactionsFail,
-  requestTransactionsSucess,
+  requestTransactionsSuccess,
   requestingTransactions,
   processedTransactions,
   fetchTransactions,
@@ -24,6 +23,9 @@ function Balances({
   useEffect(() => {
     fetchTransactions();
   }, []);
+
+  console.log(requestTransactionsSuccess);
+  console.log(requestingTransactions);
 
   const renderItem = ({item}) => (
     <BalanceItem
@@ -37,23 +39,38 @@ function Balances({
 
   if (requestingTransactions) {
     return (
-      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Text>Loading</Text>
-      </View>
+      <ContentContainer>
+        <ActivityIndicator color={'blue'} size="large" />
+      </ContentContainer>
     );
   }
 
-  const data = Object.values(processedTransactions);
+  if (requestTransactionsFail) {
+    return (
+      <Container>
+        <Text>Something went wrong, please try again later</Text>
+      </Container>
+    );
+  }
+
+  if (requestTransactionsSuccess) {
+    const data = Object.values(processedTransactions);
+    return (
+      <Container>
+        <FlatList
+          data={data}
+          renderItem={renderItem}
+          keyExtractor={item => item.user_id}
+          ItemSeparatorComponent={renderSeparator}
+        />
+      </Container>
+    );
+  }
 
   return (
-    <Container>
-      <FlatList
-        data={data}
-        renderItem={renderItem}
-        keyExtractor={item => item.user_id}
-        ItemSeparatorComponent={renderSeparator}
-      />
-    </Container>
+    <ContentContainer>
+      <Text>Welcome to Monolith</Text>
+    </ContentContainer>
   );
 }
 
