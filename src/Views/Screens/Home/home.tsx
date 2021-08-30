@@ -1,10 +1,8 @@
 import React, {useEffect} from 'react';
 import {View, Text, FlatList} from 'react-native';
-import {
-  ProcessedTransactionProps,
-  ProcessedTransactions,
-} from '../../../Redux/Types';
+import {ProcessedTransactions} from '../../../Redux/Types';
 import BalanceItem from '../../Components/BalanceItem';
+import {Container, Seperator} from './styles';
 
 interface Props {
   requestTransactionsComplete: boolean;
@@ -28,8 +26,14 @@ function Home({
   }, []);
 
   const renderItem = ({item}) => (
-    <BalanceItem user_id={item.user_id} balances={item.balances} />
+    <BalanceItem
+      user_id={item.user_id}
+      balances={item.balances}
+      timestamp={item.lastupdated}
+    />
   );
+
+  const renderSeparator = () => <Seperator />;
 
   if (requestingTransactions) {
     return (
@@ -40,20 +44,16 @@ function Home({
   }
 
   const data = Object.values(processedTransactions);
-  console.log('data :>> ', data);
 
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: 'red',
-      }}>
+    <Container>
       <FlatList
         data={data}
         renderItem={renderItem}
         keyExtractor={item => item.user_id}
+        ItemSeparatorComponent={renderSeparator}
       />
-    </View>
+    </Container>
   );
 }
 

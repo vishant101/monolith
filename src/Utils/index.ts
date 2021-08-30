@@ -45,7 +45,7 @@ export const parseSignedFloat = (amount: string) => {
   return operator === '-' ? 0 - amountInFloat : amountInFloat;
 };
 
-export const calculateBalance = (oldBalance: number, amount: string) => {
+export const calculateBalance = (oldBalance: string, amount: string) => {
   const result = parseFloat(oldBalance) + parseSignedFloat(amount);
   return result.toFixed(2);
 };
@@ -70,7 +70,12 @@ export const processTransactions = (transactions: Transactions) => {
         } else {
           BalanceItem.balances[transaction.currency] = parseSignedFloat(
             transaction.amount,
-          );
+          ).toFixed(2);
+        }
+        if (
+          new Date(transaction.timestamp) > new Date(BalanceItem.lastupdated)
+        ) {
+          BalanceItem.lastupdated = transaction.timestamp;
         }
         BalanceItem.transactions.push(transaction);
       } else {
