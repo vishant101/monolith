@@ -20,7 +20,7 @@ A mulitpage React-Native that fetches data containing a list of card transaction
 ## Screenshots
 | Laoading | Balances | Transactions |
 |------|---------|-----|
-| <img src="https://github.com/vishant101/survey/blob/master/screenshots/1.png" width="275" alt="Loading" title="Loading" /> | <img src="https://github.com/vishant101/survey/blob/master/screenshots/2.png" width="275" alt="Balances" title="Balances" /> | <img src="https://github.com/vishant101/monolith/blob/master/screenshots/3.png" width="275" alt="Transactions" title="Transactions" /> |
+| <img src="https://github.com/vishant101/monolith/blob/main/screenshots/1.png" width="275" alt="Loading" title="Loading" /> | <img src="https://github.com/vishant101/monolith/blob/master/screenshots/2.png" width="275" alt="Balances" title="Balances" /> | <img src="https://github.com/vishant101/monolith/blob/master/screenshots/3.png" width="275" alt="Transactions" title="Transactions" /> |
 
 
 ## License
