@@ -1,4 +1,4 @@
-import data from './data/transactions-medium.json';
+import data from './data/transactions-large.json';
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));

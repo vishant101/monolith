@@ -24,9 +24,6 @@ function Balances({
     fetchTransactions();
   }, []);
 
-  console.log(requestTransactionsSuccess);
-  console.log(requestingTransactions);
-
   const renderItem = ({item}) => (
     <BalanceItem
       user_id={item.user_id}
