@@ -5,10 +5,19 @@ import Home from './home';
 
 import {fetchTransactions} from '../../../Redux/Actions';
 
-const mapStateToProps = state => {
-  console.log(state);
-  return state;
-};
+const mapStateToProps = ({
+  requestTransactionsComplete,
+  requestTransactionsFail,
+  requestTransactionsSucess,
+  requestingTransactions,
+  processedTransactions,
+}) => ({
+  requestTransactionsComplete,
+  requestTransactionsFail,
+  requestTransactionsSucess,
+  requestingTransactions,
+  processedTransactions,
+});
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(

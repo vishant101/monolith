@@ -10,6 +10,7 @@ const initialState = {
   requestTransactionsSuccess: false,
   requestTransactionsFail: false,
   requestTransactionsComplete: false,
+  processedTransactions: [],
 };
 
 function rootReducer(state = initialState, action) {
