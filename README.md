@@ -30,6 +30,7 @@ A mulitpage React-Native that fetches data containing a list of card transaction
 - If transaction data is malformed then the entire transaction is discarded
 - A transaction can only contain 1 currency
 - Only three currencies are supported and alphabetic code is required to be in caps
+- All currencies are to 2 dp
 
 
 ## Architecture
