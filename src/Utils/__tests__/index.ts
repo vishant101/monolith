@@ -4,6 +4,7 @@ import {
   isValidTimestamp,
   isValidTransaction,
   isValidUserId,
+  processTransactions,
 } from '..';
 
 describe('Utils', () => {
@@ -52,5 +53,73 @@ describe('Utils', () => {
       user_id: 'b4521412-2eeb-43f3-a50d-be976b23189d',
     };
     expect(isValidTransaction(transaction)).toBeTruthy();
+  });
+
+  it('should return the corrct value for processTransactions', () => {
+    const transactions = [
+      {
+        user_id: 'b4521412-2eeb-43f3-a50d-be976b23189d',
+        timestamp: '2020-05-29T16:59:39Z',
+        currency: 'GBP',
+        amount: '-10.50',
+      },
+      {
+        user_id: 'b4521412-2eeb-43f3-a50d-be976b23189d',
+        timestamp: '2019-12-05T18:28:13Z',
+        currency: 'GBP',
+        amount: '+20.00',
+      },
+      {
+        user_id: 'b4521412-2eeb-43f3-a50d-be976b23189d',
+        timestamp: '2020-06-10T17:14:25Z',
+        currency: 'GBP',
+        amount: '-0.50',
+      },
+      {
+        user_id: 'b4521412-2eeb-43f3-a50d-be976b23189d',
+        timestamp: '2020-06-10T17:14:25Z',
+        currency: 'EUR',
+        amount: '-0.50',
+      },
+    ];
+
+    const processedTransactions = {
+      'b4521412-2eeb-43f3-a50d-be976b23189d': {
+        balances: {
+          GBP: '9.00',
+          EUR: '-0.50',
+        },
+        lastupdated: '2020-06-10T17:14:25Z',
+        transactions: [
+          {
+            user_id: 'b4521412-2eeb-43f3-a50d-be976b23189d',
+            timestamp: '2020-05-29T16:59:39Z',
+            currency: 'GBP',
+            amount: '-10.50',
+          },
+          {
+            user_id: 'b4521412-2eeb-43f3-a50d-be976b23189d',
+            timestamp: '2019-12-05T18:28:13Z',
+            currency: 'GBP',
+            amount: '+20.00',
+          },
+          {
+            user_id: 'b4521412-2eeb-43f3-a50d-be976b23189d',
+            timestamp: '2020-06-10T17:14:25Z',
+            currency: 'GBP',
+            amount: '-0.50',
+          },
+          {
+            user_id: 'b4521412-2eeb-43f3-a50d-be976b23189d',
+            timestamp: '2020-06-10T17:14:25Z',
+            currency: 'EUR',
+            amount: '-0.50',
+          },
+        ],
+        user_id: 'b4521412-2eeb-43f3-a50d-be976b23189d',
+      },
+    };
+
+    expect(processTransactions(transactions)).toEqual(processedTransactions);
   });
 });
