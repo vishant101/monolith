@@ -1,23 +1,14 @@
 import * as React from 'react';
 import {Provider} from 'react-redux';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {Balances, Transactions} from './src/Views/Screens';
 import configureStore from './src/Store/configureStore';
-
-const Stack = createNativeStackNavigator();
+import Navigation from './src/Views/Navigation';
 
 const store = configureStore();
 
 function App() {
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Balances" component={Balances} />
-          <Stack.Screen name="Transactions" component={Transactions} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <Navigation />
     </Provider>
   );
 }

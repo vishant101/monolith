@@ -22,7 +22,7 @@ function Balances({
 }: Props) {
   useEffect(() => {
     fetchTransactions();
-  }, []);
+  }, [fetchTransactions]);
 
   const renderItem = ({item}) => (
     <BalanceItem
