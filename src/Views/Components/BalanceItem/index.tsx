@@ -5,6 +5,8 @@ import {Container, ElementContantainer, HeadingText} from './styles';
 import BalanceRow from '../BalanceRow';
 import {BALANCES, LAST_ACTIVITY, USER_ID} from './consts';
 import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {StackParamList} from '../../Navigation/types';
 
 interface Props {
   user_id: string;
@@ -29,7 +31,8 @@ const renderBalances = (balances: Balances) => (
 );
 
 const BalanceItem = ({user_id, balances, timestamp}: Props) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NativeStackNavigationProp<StackParamList>>();
+
   return (
     <Container
       onPress={() =>

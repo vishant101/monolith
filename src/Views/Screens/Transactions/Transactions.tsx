@@ -6,6 +6,8 @@ import {ProcessedTransactions} from '../../../Redux/Types';
 import TransactionItem from '../../Components/TransactionItem';
 import {Container, Seperator} from './styles';
 import {Transaction} from '../../../Redux/Types';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../../Store/types';
 
 interface Props {
   processedTransactions: ProcessedTransactions;
@@ -15,7 +17,10 @@ interface RenderItemProp {
   item: Transaction;
 }
 
-function Transactions({processedTransactions}: Props) {
+function Transactions() {
+  const {processedTransactions} = useSelector(
+    (state: RootState) => state.transactionState,
+  );
   const route = useRoute();
   const data = processedTransactions[route.params?.user_id].transactions;
 

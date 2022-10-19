@@ -1,28 +1,23 @@
 import React, {useEffect} from 'react';
 import {Text, FlatList, ActivityIndicator} from 'react-native';
-import {ProcessedTransactions} from '../../../Redux/Types';
+import {useDispatch, useSelector} from 'react-redux';
+import {APP_COLORS, APP_STRINGS} from '../../../AppStyles';
+import {fetchTransactions} from '../../../Redux/Transactions';
+import {RootState} from '../../../Store/types';
 import BalanceItem from '../../Components/BalanceItem';
-import {Container, Seperator, ContentContainer} from './styles';
+import {Seperator, ContentContainer} from './styles';
 
-interface Props {
-  requestTransactionsComplete: boolean;
-  requestTransactionsFail: boolean;
-  requestTransactionsSuccess: boolean;
-  requestingTransactions: boolean;
-  processedTransactions: ProcessedTransactions;
-  fetchTransactions: Function;
-}
+function Balances() {
+  const dispatch = useDispatch();
+  const {processedTransactions, status: transactionLoadStatus} = useSelector(
+    (state: RootState) => state.transactionState,
+  );
 
-function Balances({
-  requestTransactionsFail,
-  requestTransactionsSuccess,
-  requestingTransactions,
-  processedTransactions,
-  fetchTransactions,
-}: Props) {
   useEffect(() => {
-    fetchTransactions();
-  }, [fetchTransactions]);
+    if (transactionLoadStatus === 'idle') {
+      dispatch(fetchTransactions());
+    }
+  }, [transactionLoadStatus, dispatch]);
 
   const renderItem = ({item}) => (
     <BalanceItem
@@ -34,41 +29,38 @@ function Balances({
 
   const renderSeparator = () => <Seperator />;
 
-  if (requestingTransactions) {
-    return (
-      <ContentContainer>
-        <ActivityIndicator color={'blue'} size="large" />
-      </ContentContainer>
-    );
-  }
+  const renderSpinner = () => (
+    <ActivityIndicator size={'large'} color={APP_COLORS.primary} />
+  );
 
-  if (requestTransactionsFail) {
-    return (
-      <Container>
-        <Text>Something went wrong, please try again later</Text>
-      </Container>
-    );
-  }
+  const renderError = () => <Text>{APP_STRINGS.ERROR_TEXT}</Text>;
 
-  if (requestTransactionsSuccess) {
+  const renderTransactions = () => {
     const data = Object.values(processedTransactions);
     return (
-      <Container>
-        <FlatList
-          data={data}
-          renderItem={renderItem}
-          keyExtractor={item => item.user_id}
-          ItemSeparatorComponent={renderSeparator}
-        />
-      </Container>
+      <FlatList
+        data={data}
+        renderItem={renderItem}
+        keyExtractor={item => item.user_id}
+        ItemSeparatorComponent={renderSeparator}
+      />
     );
-  }
+  };
 
-  return (
-    <ContentContainer>
-      <Text>Welcome to Monolith</Text>
-    </ContentContainer>
-  );
+  const render = () => {
+    switch (transactionLoadStatus) {
+      case 'succeeded':
+        return renderTransactions();
+      case 'failed':
+        return renderError();
+      case 'idle':
+      case 'loading':
+      default:
+        return renderSpinner();
+    }
+  };
+
+  return <ContentContainer>{render()}</ContentContainer>;
 }
 
 export default Balances;
