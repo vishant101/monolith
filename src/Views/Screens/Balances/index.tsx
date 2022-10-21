@@ -6,6 +6,11 @@ import {fetchTransactions} from '../../../Redux/Transactions';
 import {RootState} from '../../../Store/types';
 import BalanceItem from '../../Components/BalanceItem';
 import {Seperator, ContentContainer, Container} from './styles';
+import {ProcessedTransactionProps} from '../../../Redux/Transactions/types';
+
+interface RenderItemProp {
+  item: ProcessedTransactionProps;
+}
 
 function Balances() {
   const dispatch = useDispatch();
@@ -19,7 +24,7 @@ function Balances() {
     }
   }, [transactionLoadStatus, dispatch]);
 
-  const renderItem = ({item}) => (
+  const renderItem = ({item}: RenderItemProp) => (
     <BalanceItem
       user_id={item.user_id}
       balances={item.balances}
