@@ -13,7 +13,7 @@ const initialState: TransactionState = {
 export const fetchTransactions = createAsyncThunk(
   'transactions/fetchTransactions',
   async () => {
-    const response = await getTransactions();
+    const response = await getTransactions;
     return response;
   },
 );
