@@ -1,5 +1,5 @@
 # Monolith 
-A mulitpage React-Native that fetches data containing a list of card transactions for a group of users. The final balances are computed and displayed per user on the main page. Clicking into a card shows all the transactions for a particular user.
+A mulitpage React-Native that fetches data containing a list of credit card transactions for a group of users. The final balances are computed for multiple currencies and displayed per user on the main page. Clicking into a card shows all the transactions for a particular user.
 
 ## Getting Started
 1. Complete the [React Native CLI Quickstart](https://facebook.github.io/react-native/docs/getting-started.html) setup instructions.
@@ -36,7 +36,7 @@ A mulitpage React-Native that fetches data containing a list of card transaction
 ## Architecture
 The app is a multipage application built with react-naviagtion for routing. State is managed using Redux.
 
-When the app is opened a fetchTransaction async action is dispatched from the main balances screen. This action mocks an api request using a local JSON file and timeout to mock the response time. The data is processed in the async action and then stored in the store.
+When the app is opened a fetchTransaction async action is dispatched from the main balances screen. This action calls an axios request to a JSON file found at `https://api.jsonbin.io/v3/b/63530a9965b57a31e69e43a6`. On the API call succceds, the transactions are processed and populated into an array in the transaction reducer.
 
 Once the request is finished the data is loaded into a flatlist that renders the final balances for each user. The element in the flatlist can be clicked to take the user to the transactions screen where each individual transaction can be view for the user.
 
