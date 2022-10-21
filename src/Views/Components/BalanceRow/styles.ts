@@ -4,7 +4,6 @@ import {StyleSheet} from 'react-native';
 export const Container = styled.View`
   flex-direction: row;
   padding: 4px 0px;
-  background-color: white;
   align-items: center;
 `;
 

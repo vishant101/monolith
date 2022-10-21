@@ -1,8 +1,11 @@
 import styled from 'styled-components/native';
+import {APP_COLORS} from '../../../AppStyles';
 
-export const Container = styled.TouchableOpacity`
+export const Container = styled.View`
   padding: 10px 20px;
-  background-color: white;
+  background-color: ${APP_COLORS.blue};
+  border-radius: 20px;
+  margin: 10px 16px;
 `;
 
 export const HeadingText = styled.Text`

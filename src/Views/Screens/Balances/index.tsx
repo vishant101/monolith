@@ -5,8 +5,11 @@ import {APP_COLORS, APP_STRINGS} from '../../../AppStyles';
 import {fetchTransactions} from '../../../Redux/Transactions';
 import {RootState} from '../../../Store/types';
 import BalanceItem from '../../Components/BalanceItem';
-import {Seperator, ContentContainer, Container} from './styles';
+import {ContentContainer, Container} from './styles';
 import {ProcessedTransactionProps} from '../../../Redux/Transactions/types';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {StackParamList} from '../../Navigation/types';
 
 interface RenderItemProp {
   item: ProcessedTransactionProps;
@@ -14,6 +17,7 @@ interface RenderItemProp {
 
 function Balances() {
   const dispatch = useDispatch();
+  const navigation = useNavigation<NativeStackNavigationProp<StackParamList>>();
   const {processedTransactions, status: transactionLoadStatus} = useSelector(
     (state: RootState) => state.transactionState,
   );
@@ -29,10 +33,13 @@ function Balances() {
       user_id={item.user_id}
       balances={item.balances}
       timestamp={item.lastupdated}
+      onPress={() =>
+        navigation.navigate('Transactions', {
+          user_id: item.user_id,
+        })
+      }
     />
   );
-
-  const renderSeparator = () => <Seperator />;
 
   const renderSpinner = () => (
     <ContentContainer>
@@ -53,7 +60,6 @@ function Balances() {
         data={data}
         renderItem={renderItem}
         keyExtractor={item => item.user_id}
-        ItemSeparatorComponent={renderSeparator}
       />
     );
   };

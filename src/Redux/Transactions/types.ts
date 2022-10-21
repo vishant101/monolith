@@ -22,7 +22,7 @@ export interface ProcessedTransactionProps {
   user_id: string;
   lastupdated: string;
   transactions: Transactions;
-  balances?: Balances;
+  balances: Balances;
 }
 
 export interface ProcessedTransactions {

@@ -17,7 +17,7 @@ const Navigation = () => {
           component={Balances}
           options={{
             title: 'Balances',
-            headerTitleStyle: styles.homeTextStyle,
+            headerTitleStyle: styles.balancesTextStyle,
           }}
         />
         <Stack.Screen
@@ -25,7 +25,7 @@ const Navigation = () => {
           component={Transactions}
           options={{
             title: 'Transactions',
-            headerTitleStyle: styles.questionsTextStyle,
+            headerTitleStyle: styles.transactionsTextStyle,
           }}
         />
       </Stack.Navigator>
