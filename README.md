@@ -1,5 +1,5 @@
 # Monolith 
-A mulitpage React-Native that fetches data containing a list of credit card transactions for a group of users. The final balances are computed for multiple currencies and displayed per user on the main page. Clicking into a card shows all the transactions for a particular user.
+A mulitpage React-Native that fetches data containing a list of credit card transactions in multiple currencies for multiple users. The final balances are computed for each currency and displayed per user on the main page. Clicking into a card shows all the transactions for a particular user.
 
 ## Getting Started
 1. Complete the [React Native CLI Quickstart](https://facebook.github.io/react-native/docs/getting-started.html) setup instructions.
@@ -18,12 +18,12 @@ A mulitpage React-Native that fetches data containing a list of credit card tran
 - Android: `npx react-native run-android`
 
 6. To run tests:
-- npm test
+- `npm test`
 
 ## Screenshots
-| Laoading | Balances | Transactions |
+| Loading | Balances | Transactions |
 |------|---------|-----|
-| <img src="https://github.com/vishant101/monolith/blob/main/screenshots/1.png" width="275" alt="Loading" title="Loading" /> | <img src="https://github.com/vishant101/monolith/blob/main/screenshots/2.png" width="275" alt="Balances" title="Balances" /> | <img src="https://github.com/vishant101/monolith/blob/main/screenshots/3.png" width="275" alt="Transactions" title="Transactions" /> |
+| ![](https://github.com/vishant101/monolith/blob/main/screenshots/1.gif) | ![](https://github.com/vishant101/monolith/blob/main/screenshots/2.gif) | ![](https://github.com/vishant101/monolith/blob/main/screenshots/3.gif) |
 
 
 ## Assumptions
