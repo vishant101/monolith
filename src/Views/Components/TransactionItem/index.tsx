@@ -9,12 +9,7 @@ import {
   CurrencyText,
   styles,
 } from './styles';
-
-export interface Props {
-  currency: string;
-  amount: string;
-  timestamp: string;
-}
+import {Props} from './types';
 
 const TransactionItem = ({currency, amount, timestamp}: Props) => {
   return (

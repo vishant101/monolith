@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TransactionItem Component should match the previous snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "white",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "paddingBottom": 15,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 15,
+      },
+    ]
+  }
+>
+  <Text>
+    10000
+  </Text>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "paddingBottom": 0,
+            "paddingLeft": 10,
+            "paddingRight": 10,
+            "paddingTop": 0,
+          },
+        ]
+      }
+    >
+      1000
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "paddingBottom": 0,
+            "paddingLeft": 10,
+            "paddingRight": 10,
+            "paddingTop": 0,
+          },
+        ]
+      }
+    >
+      EUR
+    </Text>
+    <Image
+      resizeMode="contain"
+      source={
+        Object {
+          "testUri": "../../../src/Assets/Img/ic_eur.png",
+        }
+      }
+      style={
+        Object {
+          "height": 24,
+          "resizeMode": "stretch",
+          "width": 24,
+        }
+      }
+    />
+  </View>
+</View>
+`;

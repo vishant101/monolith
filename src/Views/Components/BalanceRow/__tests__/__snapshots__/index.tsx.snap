@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BalanceRow Component should match the previous snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "paddingBottom": 4,
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "paddingTop": 4,
+      },
+    ]
+  }
+>
+  <Image
+    resizeMode="contain"
+    source={
+      Object {
+        "testUri": "../../../src/Assets/Img/ic_eur.png",
+      }
+    }
+    style={
+      Object {
+        "height": 24,
+        "resizeMode": "stretch",
+        "width": 24,
+      }
+    }
+  />
+  <Text
+    style={
+      Array [
+        Object {
+          "paddingBottom": 0,
+          "paddingLeft": 10,
+          "paddingRight": 10,
+          "paddingTop": 0,
+        },
+      ]
+    }
+  >
+    EUR: 1000
+  </Text>
+</View>
+`;
