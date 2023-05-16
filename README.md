@@ -23,7 +23,7 @@ A mulitpage React-Native that fetches data containing a list of credit card tran
 ## Screenshots
 | Loading | Balances | Transactions |
 |------|---------|-----|
-| ![](https://github.com/vishant101/monolith/blob/main/screenshots/1.gif) | ![](https://github.com/vishant101/monolith/blob/main/screenshots/2.gif) | ![](https://github.com/vishant101/monolith/blob/main/screenshots/3.gif) |
+| ![ScreenShot](https://github.com/vishant101/monolith/blob/main/screenshots/1.gif) | ![](https://github.com/vishant101/monolith/blob/main/screenshots/2.gif) | ![](https://github.com/vishant101/monolith/blob/main/screenshots/3.gif) |
 
 
 ## Assumptions
